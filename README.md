@@ -2,7 +2,7 @@
 
 A minimalist, high-performance fish prompt with async git dirty checks that just work.
 
-![Preview](https://github.com/mattgreen/lucid.fish/raw/main/media/screenshot.png)
+![Preview](https://github.com/mattgreen/lucid.fish/raw/master/media/screenshot.png)
 
 ## Features
 
