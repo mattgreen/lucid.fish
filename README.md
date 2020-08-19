@@ -24,8 +24,6 @@ Install with fisher:
 
 **Back up your existing prompt before doing this!**
 
-**Note:** use a recent version of fisher (3.3.2) in order to install this repo, due to this repo's use of `main` as the default branch.
-
 Or install it manually. It's only one file, after all.
 
 ## Performance
