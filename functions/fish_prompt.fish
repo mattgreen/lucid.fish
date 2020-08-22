@@ -49,15 +49,15 @@ function __lucid_git_status
         set __lucid_dirty ""
     end
 
-    # Determine git working directory
-    set -l git_dir (command git --no-optional-locks rev-parse --absolute-git-dir 2>/dev/null)
-    if test $status -ne 0
-        return 1
-    end
-
     # Fetch git position & action synchronously.
     # Memoize results to avoid recomputation on subsequent redraws.
     if test -z $__lucid_git_static
+        # Determine git working directory
+        set -l git_dir (command git --no-optional-locks rev-parse --absolute-git-dir 2>/dev/null)
+        if test $status -ne 0
+            return 1
+        end
+
         set -l position (command git --no-optional-locks symbolic-ref --short HEAD 2>/dev/null)
         if test $status -ne 0
             # Denote detached HEAD state with short commit hash
