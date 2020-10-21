@@ -3,6 +3,10 @@ if ! set -q lucid_dirty_indicator
     set -g lucid_dirty_indicator "•"
 end
 
+if ! set -q lucid_prompt_symbol
+    set -g lucid_prompt_symbol "❯"
+end
+
 # This should be set to be at least as long as lucid_dirty_indicator, due to a fish bug
 if ! set -q lucid_clean_indicator
     set -g lucid_clean_indicator (string replace -r -a '.' ' ' $lucid_dirty_indicator)
@@ -177,5 +181,5 @@ function fish_prompt
         end
     end
 
-    echo -en '\n❯ '
+    echo -en "\n$lucid_prompt_symbol "
 end
