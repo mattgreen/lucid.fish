@@ -183,6 +183,10 @@ function __lucid_vi_indicator
     end
 end
 
+# Suppress default mode prompt
+function fish_mode_prompt
+end
+
 function fish_prompt
     set -l cwd (pwd | string replace "$HOME" '~')
 
