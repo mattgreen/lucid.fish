@@ -166,6 +166,27 @@ function __lucid_git_status
     set_color normal
 end
 
+function __lucid_vi_indicator
+    if [ $fish_key_bindings = "fish_vi_key_bindings" ]
+        switch $fish_bind_mode
+            case "insert"
+                set_color green
+                echo -n "[I] "
+            case "default"
+                set_color red
+                echo -n "[N] "
+            case "visual"
+                set_color yellow
+                echo -n "[S] "
+        end
+        set_color normal
+    end
+end
+
+# Suppress default mode prompt
+function fish_mode_prompt
+end
+
 function fish_prompt
     set -l cwd (pwd | string replace "$HOME" '~')
 
@@ -181,5 +202,7 @@ function fish_prompt
         end
     end
 
-    echo -en "\n$lucid_prompt_symbol "
+    echo ''
+    __lucid_vi_indicator
+    echo -n "$lucid_prompt_symbol "
 end
