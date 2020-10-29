@@ -210,10 +210,9 @@ end
 function fish_mode_prompt
 end
 
-function fish_prompt
+function __lucid_status_line
     set -l cwd (pwd | string replace "$HOME" '~')
 
-    echo ''
     set_color $lucid_cwd_color
     echo -sn $cwd
     set_color normal
@@ -224,8 +223,16 @@ function fish_prompt
             echo -sn " on $git_state"
         end
     end
+end
 
+function fish_prompt
     echo ''
+    set status_line (__lucid_status_line)
+
+    echo -n $status_line
+    set spaces (math $COLUMNS - (string length "$status_line"))
+    string repeat -n $spaces " "
+
     __lucid_vi_indicator
     echo -n "$lucid_prompt_symbol "
 end
