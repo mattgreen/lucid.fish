@@ -7,6 +7,14 @@ if ! set -q lucid_prompt_symbol
     set -g lucid_prompt_symbol "❯"
 end
 
+if ! set -q lucid_git_ahead_indicator
+    set -g lucid_git_ahead_indicator "↑"
+end
+
+if ! set -q lucid_git_behind_indicator
+    set -g lucid_git_behind_indicator "↓"
+end
+
 # This should be set to be at least as long as lucid_dirty_indicator, due to a fish bug
 if ! set -q lucid_clean_indicator
     set -g lucid_clean_indicator (string replace -r -a '.' ' ' $lucid_dirty_indicator)
@@ -40,6 +48,13 @@ function __lucid_abort_check
         command kill $pid >/dev/null 2>&1
         set -e __lucid_check_pid
     end
+end
+
+function __lucid_git_behind_ahead
+    set current_status (git status --branch --porcelain 2> /dev/null)
+    set ahead (echo $current_status | grep -oE "ahead [0-9]+" | awk '{print $2}')
+    set behind (echo $current_status | grep -oE "behind [0-9]+" | awk '{print $2}')
+    echo -n "$lucid_git_ahead_indicator$ahead $lucid_git_behind_indicator$behind"
 end
 
 function __lucid_git_status
@@ -154,6 +169,9 @@ function __lucid_git_status
     # Render git status. When in-progress, use previous state to reduce flicker.
     set_color $lucid_git_color
     echo -n $__lucid_git_static ''
+
+    __lucid_git_behind_ahead
+    echo -n ' '
 
     if ! test -z $__lucid_dirty
         echo -n $__lucid_dirty
