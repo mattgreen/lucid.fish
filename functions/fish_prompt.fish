@@ -54,7 +54,12 @@ function __lucid_git_behind_ahead
     set current_status (git status --branch --porcelain 2> /dev/null)
     set ahead (echo $current_status | grep -oE "ahead [0-9]+" | awk '{print $2}')
     set behind (echo $current_status | grep -oE "behind [0-9]+" | awk '{print $2}')
-    echo -n "$lucid_git_ahead_indicator$ahead $lucid_git_behind_indicator$behind"
+    if test -n "$ahead"
+        echo -n "$lucid_git_ahead_indicator$ahead "
+    end
+    if test -n "$behind"
+        echo -n "$lucid_git_behind_indicator$behind"
+    end
 end
 
 function __lucid_git_status
