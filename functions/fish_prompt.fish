@@ -230,7 +230,10 @@ function fish_prompt
     set status_line (__lucid_status_line)
 
     echo -n $status_line
-    set spaces (math $COLUMNS - (string length "$status_line"))
+
+    # Removes color sequences
+    set raw_status (echo $status_line | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' | sed 's/\(\x1B(B\x1B\[m\)//g')
+    set spaces (math $COLUMNS - (string length "$raw_status"))
     string repeat -n $spaces " "
 
     __lucid_vi_indicator
