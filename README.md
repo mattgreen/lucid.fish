@@ -2,7 +2,7 @@
 
 A minimalist, high-performance fish prompt with async git dirty checks that just work.
 
-![Preview](https://github.com/mattgreen/lucid.fish/raw/master/media/screenshot.png)
+![Preview](https://user-images.githubusercontent.com/56996/98549007-9520be80-22dd-11eb-884f-b688c9fd26cf.png)
 
 ## Features
 
@@ -12,19 +12,17 @@ A minimalist, high-performance fish prompt with async git dirty checks that just
 * Restrained use of color and Unicode symbols
 * Single file, well-commented, zero-dependency implementation
 
-## Requirements
-
-* fish 3.1
-
 ## Installation
 
-Install with fisher:
+### System Requirements
 
-    $ fisher add mattgreen/lucid.fish
+* [Fish](https://fishshell.com/) ≥ 3.1.0
 
-**Back up your existing prompt before doing this!**
+Install with [Fisher](https://github.com/jorgebucaran/fisher):
 
-Or install it manually. It's only one file, after all.
+```console
+fisher install mattgreen/lucid.fish
+```
 
 ## Performance
 
@@ -83,4 +81,5 @@ Here are a few other approaches that didn't pan out:
 * lucid uses a background job to asynchronously fetch dirty status. If you try to exit while a dirty status has not completed, fish will warn you it is still running. Unfortunately, lucid is not able to `disown` the job because it needs to collect the exit status from it.
 
 ## License
-MIT
+
+[MIT](LICENSE)
