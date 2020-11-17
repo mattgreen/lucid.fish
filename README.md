@@ -24,6 +24,8 @@ Install with [Fisher](https://github.com/jorgebucaran/fisher):
 fisher install mattgreen/lucid.fish
 ```
 
+**Note: this will overwrite your existing fish_prompt.fish!**
+
 ## Performance
 
 Initial rendering is fast enough, considering that the LLVM repo has over **361,000 commits**:
