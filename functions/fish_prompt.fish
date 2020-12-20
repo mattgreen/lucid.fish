@@ -178,6 +178,9 @@ function __lucid_vi_indicator
             case "visual"
                 set_color yellow
                 echo -n "[S] "
+            case "replace"
+                set_color blue
+                echo -n "[R] "
         end
         set_color normal
     end
