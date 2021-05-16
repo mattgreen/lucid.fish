@@ -193,7 +193,10 @@ end
 function fish_prompt
     set -l cwd (pwd | string replace "$HOME" '~')
 
-    echo ''
+    if test -z "$lucid_skip_newline"
+        echo ''
+    end
+
     set_color $lucid_cwd_color
     echo -sn $cwd
     set_color normal
