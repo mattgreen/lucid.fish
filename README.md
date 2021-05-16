@@ -55,6 +55,13 @@ This information is memoized to avoid re-computation during prompt redraws, whic
 * `lucid_clean_indicator`: displayed when a repository is clean. Should be at least as long as `lucid_dirty_indicator` to work around a fish bug. Default: ` ` (a space)
 * `lucid_cwd_color`: color used for current working directory. Default: `green`
 * `lucid_git_color`: color used for git information. Default: `blue`
+* `lucid_prompt_symbol`: the prompt symbol. Default: `❯`
+* `lucid_prompt_symbol_error`: the prompt symbol when an error occurs.
+   Default: `❯`
+* `lucid_prompt_symbol_color`: the color of the prompt symbol.
+   Default: `$fish_color_normal`
+* `lucid_prompt_symbol_error_color`: the color of the prompt symbol when an
+   error occurs. Default: `$fish_color_normal`
 
 ## Design
 
