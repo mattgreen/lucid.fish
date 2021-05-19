@@ -198,7 +198,7 @@ function fish_prompt
     echo -sn $cwd
     set_color normal
 
-    if test $cwd != '~'
+    if test $cwd != '~'; or test -n "$lucid_git_status_in_home_directory"
         set -l git_state (__lucid_git_status)
         if test $status -eq 0
             echo -sn " on $git_state"
