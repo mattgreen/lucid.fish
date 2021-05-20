@@ -55,6 +55,8 @@ This information is memoized to avoid re-computation during prompt redraws, whic
 * `lucid_clean_indicator`: displayed when a repository is clean. Should be at least as long as `lucid_dirty_indicator` to work around a fish bug. Default: ` ` (a space)
 * `lucid_cwd_color`: color used for current working directory. Default: `green`
 * `lucid_git_color`: color used for git information. Default: `blue`
+* `lucid_git_status_in_home_directory`: if set, git information is also
+   displayed in the home directory. Default: not set
 * `lucid_skip_newline`: if set, doesn't insert a newline before the prompt.
    Default: not set
 
