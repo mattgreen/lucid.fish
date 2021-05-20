@@ -7,6 +7,18 @@ if ! set -q lucid_prompt_symbol
     set -g lucid_prompt_symbol "❯"
 end
 
+if ! set -q lucid_prompt_symbol_error
+    set -g lucid_prompt_symbol_error "❯"
+end
+
+if ! set -q lucid_prompt_symbol_color
+    set -g lucid_prompt_symbol_color "$fish_color_normal"
+end
+
+if ! set -q lucid_prompt_symbol_error_color
+    set -g lucid_prompt_symbol_error_color "$fish_color_normal"
+end
+
 # This should be set to be at least as long as lucid_dirty_indicator, due to a fish bug
 if ! set -q lucid_clean_indicator
     set -g lucid_clean_indicator (string replace -r -a '.' ' ' $lucid_dirty_indicator)
@@ -191,6 +203,7 @@ function fish_mode_prompt
 end
 
 function fish_prompt
+    set -l last_pipestatus "$pipestatus"
     set -l cwd (pwd | string replace "$HOME" '~')
 
     if test -z "$lucid_skip_newline"
@@ -210,5 +223,19 @@ function fish_prompt
 
     echo ''
     __lucid_vi_indicator
-    echo -n "$lucid_prompt_symbol "
+
+    set -l prompt_symbol "$lucid_prompt_symbol"
+    set -l prompt_symbol_color "$lucid_prompt_symbol_color"
+
+    for status_code in "$last_pipestatus"
+        if test "$status_code" -ne 0
+            set prompt_symbol "$lucid_prompt_symbol_error"
+            set prompt_symbol_color "$lucid_prompt_symbol_error_color"
+            break
+        end
+    end
+
+    set_color "$prompt_symbol_color"
+    echo -n "$prompt_symbol "
+    set_color normal
 end
