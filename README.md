@@ -57,6 +57,8 @@ This information is memoized to avoid re-computation during prompt redraws, whic
 * `lucid_git_color`: color used for git information. Default: `blue`
 * `lucid_git_status_in_home_directory`: if set, git information is also
    displayed in the home directory. Default: not set
+* `lucid_skip_newline`: if set, doesn't insert a newline before the prompt.
+   Default: not set
 * `lucid_prompt_symbol`: the prompt symbol. Default: `❯`
 * `lucid_prompt_symbol_error`: the prompt symbol when an error occurs.
    Default: `❯`
