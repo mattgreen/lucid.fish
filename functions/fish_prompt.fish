@@ -203,7 +203,7 @@ function fish_mode_prompt
 end
 
 function fish_prompt
-    set -l last_pipestatus "$pipestatus"
+    set -l last_pipestatus $pipestatus
     set -l cwd (pwd | string replace "$HOME" '~')
 
     if test -z "$lucid_skip_newline"
@@ -227,7 +227,7 @@ function fish_prompt
     set -l prompt_symbol "$lucid_prompt_symbol"
     set -l prompt_symbol_color "$lucid_prompt_symbol_color"
 
-    for status_code in "$last_pipestatus"
+    for status_code in $last_pipestatus
         if test "$status_code" -ne 0
             set prompt_symbol "$lucid_prompt_symbol_error"
             set prompt_symbol_color "$lucid_prompt_symbol_error_color"
