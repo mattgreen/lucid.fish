@@ -88,9 +88,9 @@ function __lucid_git_status
         if test -f "$git_dir/MERGE_HEAD"
             set action "merge"
         else if test -d "$git_dir/rebase-merge"
-            set branch "rebase"
+            set action "rebase"
         else if test -d "$git_dir/rebase-apply"
-            set branch "rebase"
+            set action "rebase"
         end
 
         set -l state $position
